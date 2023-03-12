@@ -1,6 +1,6 @@
 # Backup Plan Creation
 resource "aws_backup_plan" "plan" {
-  name = "aws-backup-plan"
+  name = "ebs-backup-plan"
 rule {
     rule_name         = "nightly"
     target_vault_name = aws_backup_vault.backup_vault.name
