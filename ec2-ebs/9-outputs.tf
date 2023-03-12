@@ -31,6 +31,7 @@ output "vpc_id" {
 
 
 ###########################################
+# We can use it in future
 /*
 # VPC CIDR blocks
 output "vpc_cidr_block" {
