@@ -18,6 +18,14 @@ variable "business_divsion" {
   type = string
   default = "SAP"
 }
+# Backup project
+variable "project" {
+  description = "Business Division in the large organization this Infrastructure belongs"
+  type = string
+  default = "project1"
+}
+
+
 ###################### VPC Input Variables #####################
 # VPC Name
 variable "vpc_name" {

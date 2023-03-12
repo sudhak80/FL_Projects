@@ -24,6 +24,7 @@ module "security_group" {
   egress_rules        = ["all-all"]
 
   tags = local.common_tags
+
 }
 
 resource "aws_key_pair" "fl-server-keypair" {
@@ -48,7 +49,12 @@ module "ec2" {
   vpc_security_group_ids        = [module.security_group.security_group_id]
   associate_public_ip_address   = true
 
-  tags = local.common_tags
+  tags = {
+    owners = local.owners
+    environment = local.environment
+    key   = "Backup"
+    value = "true"
+  }
 }
 
 resource "aws_volume_attachment" "this" {
