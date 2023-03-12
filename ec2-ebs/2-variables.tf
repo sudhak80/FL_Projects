@@ -106,6 +106,13 @@ variable "instance_type" {
   default = "t3.micro"  
 }
 
+# AWS EC2 ebs disk size
+variable "ebs1_size" {
+  description = "EC2 EBS volume size"
+  type = string
+  default = "10"
+}
+
 # AWS EC2 Instance Key Pair
 variable "instance_keypair" {
   description = "AWS EC2 Key pair that need to be associated with EC2 Instance"

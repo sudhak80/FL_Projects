@@ -65,7 +65,7 @@ resource "aws_volume_attachment" "this" {
 
 resource "aws_ebs_volume" "this" {
   availability_zone = local.availability_zone
-  size              = 1
+  size              = var.ebs1_size
 
   tags = local.common_tags
 }
