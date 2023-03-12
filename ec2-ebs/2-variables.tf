@@ -1,16 +1,35 @@
-# VPC Input Variables
+###################### General Input Variables #####################
 
+# AWS Region
+variable "aws_region" {
+  description = "Region in which AWS Resources to be created"
+  type = string
+  default = "us-east-1"  
+}
+# Environment Variable
+variable "environment" {
+  description = "Environment Variable used as a prefix"
+  type = string
+  default = "dev"
+}
+# Business Division or App Team
+variable "business_divsion" {
+  description = "Business Division in the large organization this Infrastructure belongs"
+  type = string
+  default = "SAP"
+}
+###################### VPC Input Variables #####################
 # VPC Name
 variable "vpc_name" {
   description = "VPC Name"
-  type = string 
+  type = string
   default = "myvpc"
 }
 
 # VPC CIDR Block
 variable "vpc_cidr_block" {
   description = "VPC CIDR Block"
-  type = string 
+  type = string
   default = "10.0.0.0/16"
 }
 
@@ -46,22 +65,22 @@ variable "vpc_database_subnets" {
 variable "vpc_create_database_subnet_group" {
   description = "VPC Create Database Subnet Group"
   type = bool
-  default = true 
+  default = true
 }
 
 # VPC Create Database Subnet Route Table (True or False)
 variable "vpc_create_database_subnet_route_table" {
   description = "VPC Create Database Subnet Route Table"
   type = bool
-  default = true   
+  default = true
 }
 
-  
-# VPC Enable NAT Gateway (True or False) 
+
+# VPC Enable NAT Gateway (True or False)
 variable "vpc_enable_nat_gateway" {
   description = "Enable NAT Gateways for Private Subnets Outbound Communication"
   type = bool
-  default = true  
+  default = true
 }
 
 # VPC Single NAT Gateway (True or False)
@@ -69,4 +88,20 @@ variable "vpc_single_nat_gateway" {
   description = "Enable only single NAT Gateway in one Availability Zone to save costs during our demos"
   type = bool
   default = true
+}
+
+###################### EC2 Input Variables #####################
+
+# AWS EC2 Instance Type
+variable "instance_type" {
+  description = "EC2 Instance Type"
+  type = string
+  default = "t3.micro"  
+}
+
+# AWS EC2 Instance Key Pair
+variable "instance_keypair" {
+  description = "AWS EC2 Key pair that need to be associated with EC2 Instance"
+  type = string
+  default = "eks-terraform-key"
 }
