@@ -7,13 +7,13 @@ locals {
   availability_zone = "${local.region}a"
   region            = var.aws_region
 
-  backups = {
-    schedule  = "cron(0 5 ? * MON-FRI *)" /* UTC Time */
-    retention = 7 // days
-  }
-
   common_tags = {
     owners = local.owners
     environment = local.environment
   }
-} 
+}
+
+#backups = {
+#    schedule  = "cron(0 5 ? * MON-FRI *)" /* UTC Time */
+#retention = 7 // days
+#}
