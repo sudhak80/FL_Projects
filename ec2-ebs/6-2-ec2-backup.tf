@@ -1,6 +1,6 @@
 
 resource "aws_backup_vault" "example-backup-vault" {
-  name = "example-backup-vault"
+  name = "backup-vault-1"
   tags = {
     Project = var.project
     Role    = "backup-vault"
@@ -8,7 +8,7 @@ resource "aws_backup_vault" "example-backup-vault" {
 }
 
 resource "aws_backup_plan" "ec2-backup-plan" {
-  name = "example-backup-plan"
+  name = "ec2-backup-plan"
 
   rule {
     rule_name         = "weekdays-every-2-hours-${local.backups.retention}-day-retention"
