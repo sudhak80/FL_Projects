@@ -42,6 +42,7 @@ module "vpc" {
   }
 }
 
+#####################
 /*
 # Internet Gateway
 resource "aws_internet_gateway" "terra_igw1" {
