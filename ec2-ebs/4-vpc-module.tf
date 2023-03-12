@@ -42,6 +42,7 @@ module "vpc" {
   }
 }
 
+/*
 # Internet Gateway
 resource "aws_internet_gateway" "terra_igw1" {
   vpc_id = module.vpc.vpc_id
@@ -64,3 +65,4 @@ resource "aws_route_table_association" "a" {
   subnet_id      = element(module.vpc.public_subnets,0)
   route_table_id = aws_route_table.public_rt.id
 }
+*/
