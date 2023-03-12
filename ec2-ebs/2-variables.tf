@@ -1,5 +1,5 @@
-###################### General Input Variables #####################
 
+###################### General Input Variables #####################
 # AWS Region
 variable "aws_region" {
   description = "Region in which AWS Resources to be created"
@@ -99,7 +99,6 @@ variable "vpc_single_nat_gateway" {
 }
 
 ###################### EC2 Input Variables #####################
-
 # AWS EC2 Instance Type
 variable "instance_type" {
   description = "EC2 Instance Type"
@@ -111,5 +110,5 @@ variable "instance_type" {
 variable "instance_keypair" {
   description = "AWS EC2 Key pair that need to be associated with EC2 Instance"
   type = string
-  default = "eks-terraform-key"
+  default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCTFdH6gNWg+XEH2QeFTWr3v3MVzDW6SM4MKufqpU8qSGNd5fKxPE1wubNJKRjV2MY5SrSajwNrNjAkC8zSnTws6EBER8fJRmf3ZB9X0IMNk5IssK2lpMNIuTRhE+J2lN7Q6ZkbzfCyjhdSSHMQv8deFljaJbXPvDSFj1xwbfVTP6MeJ6p/gr/eRt2Pqo5z0VPNCxvwELqnGMbDfvGFzaQb8a7i5obevcaWE3R5GnY/58mAXz6FPB9WcAZmAqwoOmbdXpGXAhRerCMQaJiDN7rnq3msGSlzPeEQjXFwxo7ttAloEEFZr703ZRAQmuS7Iv02T1Gh1d7pVu1H2PwjwCXZ rsa-key-20230220"
 }

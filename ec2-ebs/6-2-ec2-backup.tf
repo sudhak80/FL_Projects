@@ -7,7 +7,7 @@ resource "aws_backup_vault" "example-backup-vault" {
   }
 }
 
-resource "aws_backup_plan" "example-backup-plan" {
+resource "aws_backup_plan" "ec2-backup-plan" {
   name = "example-backup-plan"
 
   rule {
@@ -36,8 +36,8 @@ resource "aws_backup_plan" "example-backup-plan" {
 
 resource "aws_backup_selection" "example-server-backup-selection" {
   iam_role_arn = aws_iam_role.aws-backup-service-role.arn
-  name         = "example-server-resources"
-  plan_id      = aws_backup_plan.example-backup-plan.id
+  name         = "ec2-server-resources"
+  plan_id      = aws_backup_plan.ec2-backup-plan.id
 
   selection_tag {
     type  = "STRINGEQUALS"
@@ -45,4 +45,3 @@ resource "aws_backup_selection" "example-server-backup-selection" {
     value = "true"
   }
 }
-
