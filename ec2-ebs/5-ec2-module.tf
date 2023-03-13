@@ -50,12 +50,14 @@ module "ec2" {
   vpc_security_group_ids        = [module.security_group.security_group_id]
   associate_public_ip_address   = true
 
-  tags = {
-    owners = local.owners
-    environment = local.environment
-    key   = "Backup"
-    value = "true"
-  }
+
+  tags = local.common_tags
+  # tags = {
+  #   Owners = local.owners
+  #   Environment = local.environment
+  #   key   = "Backup"
+  #   value = "true"
+  # }
 }
 
 resource "aws_volume_attachment" "this" {

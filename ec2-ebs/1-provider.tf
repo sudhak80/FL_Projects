@@ -7,11 +7,11 @@ terraform {
       version = "~> 3.0"
     }
   }
-  backend "s3" {
-    bucket = "sudha-eks-tf-remote-state"
-    key    = "myapp/state.tfstate"
-    region = "us-east-1"
-  }
+#  backend "s3" {
+#    bucket = "sudha-eks-tf-remote-state"
+#    key    = "myapp/state.tfstate"
+#    region = "us-east-1"
+#  }
 }
 
 # Provider Block

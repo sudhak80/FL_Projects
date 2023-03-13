@@ -18,11 +18,23 @@ variable "business_divsion" {
   type = string
   default = "SAP"
 }
-# Backup project
-variable "project" {
-  description = "Business Division in the large organization this Infrastructure belongs"
+# Owner
+variable "owners" {
+  description = "Owner of the organization this Infrastructure belongs"
   type = string
-  default = "project1"
+  default = "Suresh"
+}
+# Project
+variable "project" {
+  description = "Project Details"
+  type = string
+  default = "Dextrus"
+}
+# Approved By lead, manager
+variable "approvedby" {
+  description = "Approved By"
+  type = string
+  default = "Srinivas"
 }
 
 

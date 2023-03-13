@@ -8,7 +8,7 @@ module "vpc" {
   name = "${local.name}-${var.vpc_name}"
   cidr = var.vpc_cidr_block
   azs             = var.vpc_availability_zones
-  public_subnets  = element(var.vpc_public_subnets,0)
+  public_subnets  = var.vpc_public_subnets
   #private_subnets = var.vpc_private_subnets
 
   # Database Subnets
