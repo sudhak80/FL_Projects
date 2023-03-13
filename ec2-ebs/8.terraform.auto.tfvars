@@ -10,7 +10,7 @@ ebs1_size = "8"
 vpc_name = "myvpc1"
 vpc_cidr_block = "10.10.0.0/16"
 vpc_availability_zones = ["us-east-1a", "us-east-1b"]
-vpc_public_subnets = "10.10.101.0/24"
+vpc_public_subnets = ["10.10.101.0/24"]
 
 
 
