@@ -9,7 +9,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "rightdata-tfstate"
+    bucket = "ec2-creation-tfstate"
     key    = "test/eks"
     region = "us-east-1"
   }
