@@ -29,7 +29,7 @@ module "security_group" {
 }
 
 resource "aws_key_pair" "fl-server-keypair" {
-  key_name   = "${local.name}-${var.vpc_name}-server-keypair"
+  key_name   = "hadoop" #"${local.name}-${var.vpc_name}-server-keypair"
   public_key = var.instance_keypair
 }
 
@@ -42,7 +42,7 @@ module "ec2" {
   version = "3.3.0"
 
   name                          = local.name
-  ami                           = data.aws_ami.amazon_linux.id
+  ami                           = "ami-02701bcdc5509e57b" #data.aws_ami.amazon_linux.id
   instance_type                 = var.instance_type
   key_name                      = aws_key_pair.fl-server-keypair.key_name
   availability_zone             = local.availability_zone
