@@ -12,12 +12,7 @@ variable "environment" {
   type = string
   default = "dev"
 }
-# Business Division or App Team
-variable "business_divsion" {
-  description = "Business Division in the large organization this Infrastructure belongs"
-  type = string
-  default = "SAP"
-}
+
 # Owner
 variable "owners" {
   description = "Owner of the organization this Infrastructure belongs"
@@ -130,4 +125,16 @@ variable "instance_keypair" {
   description = "AWS EC2 Key pair that need to be associated with EC2 Instance"
   type = string
   default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCTFdH6gNWg+XEH2QeFTWr3v3MVzDW6SM4MKufqpU8qSGNd5fKxPE1wubNJKRjV2MY5SrSajwNrNjAkC8zSnTws6EBER8fJRmf3ZB9X0IMNk5IssK2lpMNIuTRhE+J2lN7Q6ZkbzfCyjhdSSHMQv8deFljaJbXPvDSFj1xwbfVTP6MeJ6p/gr/eRt2Pqo5z0VPNCxvwELqnGMbDfvGFzaQb8a7i5obevcaWE3R5GnY/58mAXz6FPB9WcAZmAqwoOmbdXpGXAhRerCMQaJiDN7rnq3msGSlzPeEQjXFwxo7ttAloEEFZr703ZRAQmuS7Iv02T1Gh1d7pVu1H2PwjwCXZ rsa-key-20230220"
+}
+
+variable "key_name" {
+  type = string
+}
+
+variable "public_key" {
+  type = string
+}
+
+variable "ami" {
+  type = string
 }

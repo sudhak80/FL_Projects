@@ -28,9 +28,19 @@ module "security_group" {
 
 }
 
+resource "tls_private_key" "pk" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 resource "aws_key_pair" "fl-server-keypair" {
-  key_name   = "${local.name}-${var.vpc_name}-server-keypair"
-  public_key = var.instance_keypair
+  key_name   = var.key_name
+  public_key = tls_private_key.pk.public_key_openssh
+
+    provisioner "local-exec" { # Create a "myKey.pem" to your computer!!
+    command = "echo '${tls_private_key.pk.private_key_pem}' > ./dextrus-demo.pem"
+  }
+  tags = local.common_tags
 }
 
 ################################################################################
@@ -42,7 +52,7 @@ module "ec2" {
   version = "3.3.0"
 
   name                          = local.name
-  ami                           = data.aws_ami.amazon_linux.id
+  ami                           = var.ami  #data.aws_ami.amazon_linux.id
   instance_type                 = var.instance_type
   key_name                      = aws_key_pair.fl-server-keypair.key_name
   availability_zone             = local.availability_zone
@@ -64,6 +74,7 @@ resource "aws_volume_attachment" "this" {
   device_name = "/dev/sdh"
   volume_id   = aws_ebs_volume.this.id
   instance_id = module.ec2.id
+
 }
 
 resource "aws_ebs_volume" "this" {
