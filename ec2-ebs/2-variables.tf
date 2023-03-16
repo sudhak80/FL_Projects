@@ -25,6 +25,10 @@ variable "project" {
   type = string
   default = "Dextrus"
 }
+
+variable  "instance_count"{}
+
+
 # Approved By lead, manager
 variable "approvedby" {
   description = "Approved By"

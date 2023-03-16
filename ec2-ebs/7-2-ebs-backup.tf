@@ -17,7 +17,7 @@ lifecycle {
 # Backup Resource (EBS) Selection
 resource "aws_backup_selection" "this" {
   iam_role_arn = aws_iam_role.aws-backup-service-role.arn
-  name         = "${local.name}-back-selection"
+  name         = "${local.name}-backup-selection"
   plan_id      = aws_backup_plan.plan.id
 resources = [
     aws_ebs_volume.this.arn
