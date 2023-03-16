@@ -15,7 +15,7 @@ module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 4.0"
 
-  name        = local.name
+  name        = "${local.name}-sg"
   description = "Security group for example usage with EC2 instance"
   vpc_id      = module.vpc.vpc_id
 
@@ -34,11 +34,11 @@ resource "tls_private_key" "pk" {
 }
 
 resource "aws_key_pair" "fl-server-keypair" {
-  key_name   = var.key_name
+  key_name   = "${local.name}-keypair"
   public_key = tls_private_key.pk.public_key_openssh
 
     provisioner "local-exec" { # Create a "myKey.pem" to your computer!!
-    command = "echo '${tls_private_key.pk.private_key_pem}' > ./dextrus-demo.pem"
+    command = "echo '${tls_private_key.pk.private_key_pem}' > ./${local.name}-keypair.pem"
   }
   tags = local.common_tags
 }
@@ -51,7 +51,7 @@ module "ec2" {
   source = "terraform-aws-modules/ec2-instance/aws"
   version = "3.3.0"
 
-  name                          = local.name
+  name                          = "${local.name}-ec2"
   ami                           = var.ami  #data.aws_ami.amazon_linux.id
   instance_type                 = var.instance_type
   key_name                      = aws_key_pair.fl-server-keypair.key_name
@@ -61,13 +61,15 @@ module "ec2" {
   associate_public_ip_address   = true
 
 
-  tags = local.common_tags
-  # tags = {
-  #   Owners = local.owners
-  #   Environment = local.environment
-  #   key   = "Backup"
-  #   value = "true"
-  # }
+  tags = {
+    Owners = local.owners
+    Environment = local.environment
+    "Approved By" = var.approvedby
+    Project = var.project
+    "Use by" = 	"RDT team"
+    Purpose	= "RDt Demo"
+    Backup   = "true"
+  }
 }
 
 resource "aws_volume_attachment" "this" {

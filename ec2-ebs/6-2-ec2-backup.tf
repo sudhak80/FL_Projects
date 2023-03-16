@@ -36,7 +36,7 @@ resource "aws_backup_plan" "ec2-backup-plan" {
 
 resource "aws_backup_selection" "example-server-backup-selection" {
   iam_role_arn = aws_iam_role.aws-backup-service-role.arn
-  name         = "ec2-server-resources"
+  name         = "${local.name}-ec2-server-resources"
   plan_id      = aws_backup_plan.ec2-backup-plan.id
 
   selection_tag {

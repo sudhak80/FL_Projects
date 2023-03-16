@@ -1,5 +1,5 @@
 resource "aws_iam_role" "aws-backup-service-role" {
-  name               = "DefaultBackupRole"
+  name               = "${local.name}-backuprole"
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
