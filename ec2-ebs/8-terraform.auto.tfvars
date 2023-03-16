@@ -15,7 +15,7 @@ ami           = "ami-02701bcdc5509e57b"
 
 # VPC Variables
 vpc_name = "dextrus-demo"
-vpc_cidr_block = "10.10.0.0/16"
+vpc_cidr_block = "10.20.0.0/16"
 vpc_availability_zones = ["us-west-2a", "us-west-2b"]
 vpc_public_subnets = ["10.10.101.0/24", "10.10.102.0/24"]
 

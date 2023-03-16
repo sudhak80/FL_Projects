@@ -52,7 +52,7 @@ module "ec2" {
   version = "3.3.0"
 
   name                          = "${local.name}-ec2"
-  ami                           = var.ami  #data.aws_ami.amazon_linux.id
+  ami                           = data.aws_ami.amazon_linux.id  #var.ami
   instance_type                 = var.instance_type
   key_name                      = aws_key_pair.fl-server-keypair.key_name
   availability_zone             = local.availability_zone

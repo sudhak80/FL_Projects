@@ -1,6 +1,6 @@
 # Backup Plan Creation
 resource "aws_backup_plan" "plan" {
-  name = "ebs-backup-plan"
+  name = "${local.name}-ebs-backup-plan"
 rule {
     rule_name         = "nightly"
     target_vault_name = aws_backup_vault.backup_vault.name
@@ -16,8 +16,8 @@ lifecycle {
 
 # Backup Resource (EBS) Selection
 resource "aws_backup_selection" "this" {
-  iam_role_arn = aws_iam_role.backup.arn
-  name         = "back-selection"
+  iam_role_arn = aws_iam_role.aws-backup-service-role.arn
+  name         = "${local.name}-back-selection"
   plan_id      = aws_backup_plan.plan.id
 resources = [
     aws_ebs_volume.this.arn
